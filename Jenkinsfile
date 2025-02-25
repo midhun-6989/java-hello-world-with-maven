@@ -6,7 +6,7 @@ pipeline{
     }
 
     environment {
-        OWNER = 'midhun6989'
+        OWNER = 'midhun-6989'
         REPO = 'java-hello-world-with-maven'
     }
     
@@ -21,8 +21,7 @@ pipeline{
         stage('create release'){
             steps{
                 withCredentials([string(credentialsId: 'GH-Token', variable: 'TOKEN')]) {
-                   sh '''#!/bin/bash
-                       
+                   sh '''#!/bin/bash          
                        DATA='{"tag_name":"v'$BUILD_NUMBER'","target_commitish":"'$BRANCH_NAME'","name":"v'$BUILD_NUMBER'","body":"Description of the release","draft":false,"prerelease":false,"generate_release_notes":false}'
 
                        gh api \
