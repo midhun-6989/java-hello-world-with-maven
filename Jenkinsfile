@@ -22,7 +22,6 @@ pipeline{
             steps{
                 withCredentials([string(credentialsId: 'GH-Token', variable: 'TOKEN')]) {
                    sh '''#!/bin/bash
-                       gh auth login
                        
                        DATA='{"tag_name":"v'$BUILD_NUMBER'","target_commitish":"'$BRANCH_NAME'","name":"v'$BUILD_NUMBER'","body":"Description of the release","draft":false,"prerelease":false,"generate_release_notes":false}'
 
